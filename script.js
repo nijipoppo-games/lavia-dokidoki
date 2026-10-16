@@ -7,7 +7,6 @@ const speaker = document.getElementById("speaker");
 const choices = document.getElementById("choices");
 const nextButton = document.getElementById("next-button");
 const restartButton = document.getElementById("restart-button");
-const expression = document.getElementById("expression");
 
 const story = {
   opening: { speaker: "ラヴィア", text: "あ、まだ残ってたんだ。……ねえ、今日は一緒に帰らない？", next: "invitation" },
@@ -34,7 +33,6 @@ function showScene(id) {
   speaker.textContent = scene.speaker;
   text.textContent = scene.text;
   document.getElementById("progress").textContent = scene.end ? "FIN ♡" : `SCENE ${String(step).padStart(2, "0")}`;
-  if (scene.expression) expression.textContent = scene.expression;
   choices.replaceChildren();
   nextButton.hidden = !scene.next;
   restartButton.hidden = !scene.end;
@@ -51,7 +49,6 @@ function showScene(id) {
 
 function startGame() {
   step = 0;
-  expression.textContent = "• ‿ •";
   titleScreen.hidden = true;
   gameScreen.hidden = false;
   showScene("opening");
